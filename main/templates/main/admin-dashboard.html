@@ -1,0 +1,44 @@
+{% extends 'main/base.html' %}
+{% block title %}لوحة تحكم المشرف | بيوتي لينك{% endblock %}
+
+{% block content %}
+<section class="section">
+  <div class="section-inner">
+    <div class="section-header fade-up">
+      <div class="section-kicker">بيوتي لينك</div>
+      <h2 class="section-title">لوحة تحكم المشرف – إحصائيات المنصة</h2>
+      <p class="section-subtitle">
+        هذه الصفحة جزء من واجهة منصة بيوتي لينك، وتم تصميمها كواجهة Front-End فقط في مشروع التخرج.
+      </p>
+    </div>
+    <div class="card fade-up">
+      <p class="section-subtitle">
+        يمكنك استخدام هذه الصفحة لعرض بيانات حقيقية (جداول، نماذج، إحصائيات، أو إعدادات) حسب الدور المرتبط بها.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-inner">
+    <div class="section-header fade-up">
+      <div class="section-kicker">لوحة المشرف</div>
+      <h2 class="section-title">إحصائيات منصة بيوتي لينك</h2>
+    </div>
+    <div class="metric-grid fade-up">
+      <div class="metric-card">
+        <div class="metric-label">إجمالي الكوافيرات المسجلة</div>
+        <div class="metric-value">45</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">إجمالي العميلات</div>
+        <div class="metric-value">680</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">إجمالي الحجوزات</div>
+        <div class="metric-value">1240</div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

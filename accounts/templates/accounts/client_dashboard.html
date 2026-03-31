@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة العميل | بيوتي لينك</title>
+    <link rel="stylesheet" href="{% static 'css/client_dashboard.css' %}">
+</head>
+<body>
+    <div class="client-dashboard">
+        <header>
+            <h1>مرحباً {{ request.user.username }}</h1>
+            <a href="{% url 'logout' %}" class="logout-btn">تسجيل الخروج</a>
+        </header>
+        <main class="main-content">
+            <div class="cards-container">
+                <div class="card">
+                    <h3>الحجوزات</h3>
+                    <p>يمكنك حجز الخدمات من هنا</p>
+                    <button>حجز خدمة</button>
+                </div>
+                <div class="card">
+                    <h3>التعليقات</h3>
+                    <p>أضيفي تعليق على الخدمة</p>
+                    <button>إضافة تعليق</button>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

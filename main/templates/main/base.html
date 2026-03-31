@@ -1,0 +1,105 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}بيوتي لينك{% endblock %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="{% static 'css/style.css' %}" rel="stylesheet">
+</head>
+<body>
+
+<div class="app">
+
+  <!-- NAVBAR -->
+  <header>
+    <div class="nav-inner">
+
+      <div class="logo-wrap">
+        <div class="logo-icon">BL</div>
+        <div>
+          <div class="logo-text-main">بيوتي لينك</div>
+          <div class="logo-text-sub">دليل الكوافير الشامل</div>
+        </div>
+      </div>
+
+      <button class="nav-toggle" type="button">☰ القائمة</button>
+
+      <nav>
+        <a href="{% url 'home' %}" class="nav-link">الرئيسية</a>
+        <a href="{% url 'salons' %}" class="nav-link">تصفح الكوافيرات</a>
+        <a href="{% url 'booking' %}" class="nav-link">الحجز</a>
+        <a href="{% url 'admin_dashboard' %}" class="nav-link">لوحة المشرف</a>
+        <a href="{% url 'about' %}" class="nav-link">عن بيوتي لينك</a>
+        <a href="{% url 'contact' %}" class="nav-link">تواصل</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="{% url 'login' %}" class="btn btn-outline">تسجيل الدخول</a>
+        <a href="{% url 'booking' %}" class="btn btn-primary">احجزي الآن</a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main>
+    {% block content %}
+    {% endblock %}
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+
+      <div class="footer-col">
+        <div class="logo-wrap" style="margin-bottom:10px;">
+          <div class="logo-icon">BL</div>
+          <div>
+            <div class="logo-text-main">بيوتي لينك</div>
+            <div class="logo-text-sub">دليل الكوافير الشامل</div>
+          </div>
+        </div>
+        <p class="footer-text">
+          منصة تساعدك في اكتشاف أفضل الكوافيرات وحجز المواعيد بسهولة.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h3 class="footer-title">روابط</h3>
+        <ul class="footer-links">
+          <li><a href="{% url 'home' %}">الرئيسية</a></li>
+          <li><a href="{% url 'salons' %}">الكوافيرات</a></li>
+          <li><a href="{% url 'booking' %}">الحجز</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3 class="footer-title">معلومات</h3>
+        <ul class="footer-links">
+          <li><a href="#">سياسة الخصوصية</a></li>
+          <li><a href="#">الشروط</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3 class="footer-title">تواصل</h3>
+        <ul class="footer-links">
+          <li>📍 صنعاء</li>
+          <li>📧 info@beautylink.com</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 بيوتي لينك</p>
+    </div>
+  </footer>
+
+</div>
+
+<script src="{% static 'js/main.js' %}" defer></script>
+
+</body>
+</html>

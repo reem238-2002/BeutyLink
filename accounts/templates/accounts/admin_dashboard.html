@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة الأدمن | بيوتي لينك</title>
+    <link rel="stylesheet" href="{% static 'css/admin_dashboard.css' %}">
+    <script src="{% static 'js/admin_dashboard.js' %}" defer></script>
+</head>
+<body>
+    <div class="admin-dashboard">
+        <aside class="sidebar">
+            <h2>لوحة الأدمن</h2>
+            <ul>
+                <li><a href="#">إدارة المستخدمين</a></li>
+                <li><a href="#">إدارة الكوافيرات</a></li>
+                <li><a href="#">الإحصائيات</a></li>
+                <li><a href="{% url 'logout' %}">تسجيل الخروج</a></li>
+            </ul>
+        </aside>
+        <main class="main-content">
+            <h1>مرحباً {{ request.user.username }}</h1>
+            <div class="cards-container">
+                <div class="card">
+                    <h3>المستخدمين</h3>
+                    <p>عدد المستخدمين: 120</p>
+                </div>
+                <div class="card">
+                    <h3>الكوافيرات</h3>
+                    <p>عدد الكوافيرات: 15</p>
+                </div>
+                <div class="card">
+                    <h3>الحجوزات اليوم</h3>
+                    <p>عدد الحجوزات: 42</p>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

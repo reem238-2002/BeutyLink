@@ -1,0 +1,81 @@
+body {
+    margin: 0;
+    font-family: "Tajawal", sans-serif;
+    background: #fdf0f8;
+}
+
+.salon-dashboard {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 200px;
+    background: #d63384;
+    color: #fff;
+    padding: 2rem 1rem;
+}
+
+.sidebar h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin: 1rem 0;
+}
+
+.sidebar ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    display: block;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    transition: background 0.3s;
+}
+
+.sidebar ul li a:hover {
+    background: #b0266d;
+}
+
+.main-content {
+    flex: 1;
+    padding: 2rem;
+}
+
+.main-content h1 {
+    color: #d63384;
+    margin-bottom: 2rem;
+}
+
+.cards-container {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.card {
+    flex: 1;
+    min-width: 180px;
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.card h3 {
+    margin-bottom: 1rem;
+    color: #d63384;
+}
+
+.card p {
+    font-size: 1.2rem;
+    color: #555;
+}

@@ -1,0 +1,151 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <title>الحجز الإلكتروني | بيوتي لينك</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+</head>
+<body data-page="booking">
+
+<div class="app">
+
+<header>
+  <div class="nav-inner">
+    <div class="logo-wrap">
+      <div class="logo-icon">BL</div>
+      <div>
+        <div class="logo-text-main">بيوتي لينك</div>
+        <div class="logo-text-sub">منصة دليل الكوافير الشامل</div>
+      </div>
+    </div>
+
+<button class="nav-toggle" type="button">☰ القائمة</button>
+
+<nav>
+  <a href="/" class="nav-link">الرئيسية</a>
+  <a href="/salons/" class="nav-link">تصفح الكوافيرات</a>
+  <a href="/booking/" class="nav-link">الحجز</a>
+  <a href="/admin-dashboard/" class="nav-link">لوحة المشرف</a>
+  <a href="/about/" class="nav-link">عن بيوتي لينك</a>
+  <a href="/contact/" class="nav-link">تواصل</a>
+</nav>
+
+<div class="nav-actions">
+  <a href="/admin-login/" class="btn btn-outline">دخول كوافير</a>
+  <a href="/booking/" class="btn btn-primary">احجزي الآن</a>
+</div>
+
+  </div>
+</header>
+
+<main>
+<section class="section">
+  <div class="section-inner">
+
+    <div class="section-header fade-up">
+      <div class="section-kicker">الحجز الإلكتروني</div>
+      <h2 class="section-title">نموذج حجز موعد تجميلي عبر بيوتي لينك</h2>
+      <p class="section-subtitle">
+        هذه الصفحة تمثل الواجهة الرئيسية للحجز، وهي جاهزة ليتم ربطها بجدول المواعيد وقاعدة البيانات
+        عن طريق فريق الباك-إند في مشروع التخرج.
+      </p>
+    </div>
+
+    <div class="grid-2">
+
+      <div class="card fade-up">
+        <form id="bookingForm">
+          <div class="form-row">
+            <div class="form-field">
+              <label for="bookingSalon">اختيار الكوافير</label>
+              <select id="bookingSalon" required>
+                <option value="">اختاري الكوافير</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label for="bookingService">الخدمة</label>
+              <select id="bookingService" required>
+                <option value="">اختاري الكوافير أولاً</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-field">
+              <label for="bookingDate">تاريخ الموعد</label>
+              <input id="bookingDate" type="date" required />
+            </div>
+            <div class="form-field">
+              <label for="bookingTime">وقت الموعد</label>
+              <input id="bookingTime" type="time" required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-field">
+              <label for="bookingName">اسم العميلة</label>
+              <input id="bookingName" type="text" placeholder="الاسم الثلاثي" required />
+            </div>
+            <div class="form-field">
+              <label for="bookingPhone">رقم الهاتف</label>
+              <input id="bookingPhone" type="tel" placeholder="77XXXXXXX" required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-field">
+              <label for="bookingPayment">طريقة الدفع</label>
+              <select id="bookingPayment" required>
+                <option value="عند الحضور">الدفع عند الحضور</option>
+                <option value="الكتروني (قريباً)">دفع إلكتروني (قريباً)</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label for="bookingNotes">ملاحظات إضافية</label>
+              <textarea id="bookingNotes" placeholder="مثال: مكياج هادئ، بشرة حساسة..."></textarea>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width:100%;margin-top:0.6rem;">
+            إرسال طلب الحجز
+          </button>
+        </form>
+      </div>
+
+      <div class="card fade-up">
+        <div class="section-kicker">ملخص الحجز</div>
+        <p class="section-subtitle">
+          يمكن لفريق الباك-إند تخزين بيانات الحجز في قاعدة البيانات،
+          وإرسال إشعار للكوافير والعميلة.
+        </p>
+        <ul class="list">
+          <li>✔ جاهز للربط مع جدول المواعيد</li>
+          <li>✔ قابل للتوسع لإضافة طرق دفع إلكترونية</li>
+          <li>✔ يدعم مستويات صلاحيات مختلفة</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+<div class="footer-inner">
+  <div>مشروع تخرج – منصة بيوتي لينك</div>
+  <div>النسخة العربية والإنجليزية مدمجة في نفس المشروع</div>
+</div>
+</footer>
+
+</div>
+
+<div class="toast">
+  <div class="toast-title"></div>
+  <div class="toast-message"></div>
+</div>
+
+<script src="{% static 'js/main.js' %}" defer></script>
+</body>
+</html>

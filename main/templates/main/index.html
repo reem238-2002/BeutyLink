@@ -1,0 +1,193 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}بيوتي لينك | دليل الكوافير الشامل{% endblock %}
+
+{% block content %}
+
+<section class="section">
+  <div class="section-inner">
+    <div class="hero">
+      <div>
+
+        <div class="hero-badges fade-up">
+          <div class="hero-badge">💄 تجربة تجميل عصرية</div>
+          <div class="hero-badge">✨ حجز سهل وسريع</div>
+          <div class="hero-badge">⭐ كوافيرات موثوقة</div>
+        </div>
+
+        <div class="section-kicker fade-up">منصة رقمية لخدمات التجميل</div>
+        <h1 class="hero-title fade-up">
+          منصة <span class="hero-highlight">بيوتي لينك – Beauty Link</span>
+        </h1>
+
+        <p class="hero-text fade-up">
+          منصة بيوتي لينك تربط بين العميلات والكوافيرات بطريقة سهلة واحترافية،
+          مع إمكانية استعراض الخدمات، مقارنة الأسعار، وحجز المواعيد بكل سلاسة.
+        </p>
+
+        <div class="hero-actions fade-up">
+          <a href="{% url 'booking' %}" class="btn btn-primary">احجزي الآن</a>
+          <a href="{% url 'salons' %}" class="btn btn-outline">تصفح الكوافيرات</a>
+        </div>
+
+        <div class="hero-stats fade-up">
+          <div class="stat-pill">
+            <span class="stat-number">+45</span>
+            كوافير متاح
+          </div>
+          <div class="stat-pill">
+            <span class="stat-number">+320</span>
+            عملية حجز
+          </div>
+          <div class="stat-pill">
+            <span class="stat-number">3</span>
+            أنواع حسابات
+          </div>
+        </div>
+
+      </div>
+
+      <div class="hero-visual fade-up">
+        <div class="hero-visual-main">
+          <div class="beauty-bubble bubble-1"></div>
+          <div class="beauty-bubble bubble-2"></div>
+          <div class="beauty-bubble bubble-3"></div>
+
+          <div class="hero-visual-inner">
+            <div class="section-kicker">أقرب الكوافيرات</div>
+
+            <div class="salon-mini">
+              <div class="salon-avatar">BL</div>
+              <div>
+                <div class="salon-meta-title">بيوتي لينك كوين ستايل</div>
+                <div class="salon-meta-sub">مكياج عرائس وخدمات متكاملة</div>
+                <div class="tag">صالون موثق</div>
+              </div>
+            </div>
+
+            <div class="salon-mini">
+              <div class="salon-avatar">GA</div>
+              <div>
+                <div class="salon-meta-title">جولدن آرت بيوتي</div>
+                <div class="salon-meta-sub">باقات عرائس مميزة</div>
+                <div class="rating-stars">★★★★★</div>
+              </div>
+            </div>
+
+            <p class="section-subtitle" style="margin-top:0.6rem;">
+              تصفحي أفضل الصالونات واحجزي بكل سهولة.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- الواجهات -->
+    <div class="grid-3 fade-up" style="margin-top:1.5rem;">
+      <div class="card">
+        <div class="section-kicker">واجهة العميلة</div>
+        <p class="section-subtitle">
+          تصفح، مقارنة، وحجز بسهولة مع تجربة استخدام بسيطة وواضحة.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="section-kicker">واجهة الكوافير</div>
+        <p class="section-subtitle">
+          إدارة الخدمات، الأسعار، والحجوزات من لوحة تحكم سهلة.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="section-kicker">واجهة المشرف</div>
+        <p class="section-subtitle">
+          متابعة المستخدمين والكوافيرات وإدارة النظام بالكامل.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- قسم الجمال -->
+<section class="section">
+<div class="section-inner">
+
+<div class="section-header fade-up">
+<div class="section-kicker">عالم الجمال</div>
+<h2 class="section-title">رحلة الجمال</h2>
+<p class="section-subtitle">
+الجمال تجربة شخصية تعكس ذوقك وثقتك بنفسك، وبيوتي لينك يساعدك تعيشي هذه التجربة بسهولة.
+</p>
+</div>
+
+<div class="grid-2 fade-up">
+<div class="card">
+<h3>💄 الجمال أسلوب حياة</h3>
+<p>كل لمسة تجميل هي تعبير عن شخصيتك، من العناية بالبشرة إلى اختيار الإطلالة المناسبة.</p>
+</div>
+
+<div class="card">
+<h3>🌸 الجمال مع التقنية</h3>
+<p>منصة تجمع أفضل الكوافيرات في مكان واحد لتسهيل الوصول والحجز.</p>
+</div>
+</div>
+
+
+<div class="section-header fade-up" style="margin-top:2rem;">
+<h2 class="section-title">مميزات المنصة</h2>
+</div>
+
+<div class="grid-3 fade-up">
+<div class="card"><h3>🔍 بحث سهل</h3><p>ابحثي عن الكوافير المناسب بسرعة.</p></div>
+<div class="card"><h3>📸 عرض الأعمال</h3><p>شاهدي نماذج حقيقية قبل الحجز.</p></div>
+<div class="card"><h3>⭐ تقييمات</h3><p>اختاري بناءً على تجارب حقيقية.</p></div>
+<div class="card"><h3>📅 حجز مباشر</h3><p>بدون اتصالات أو تعقيد.</p></div>
+<div class="card"><h3>💰 أسعار واضحة</h3><p>شفافية كاملة في الخدمات.</p></div>
+<div class="card"><h3>🔒 خصوصية</h3><p>بياناتك محفوظة وآمنة.</p></div>
+</div>
+
+
+<div class="section-header fade-up" style="margin-top:2rem;">
+<h2 class="section-title">الخدمات المتوفرة</h2>
+</div>
+
+<div class="grid-2 fade-up">
+<div class="card">
+<ul class="list">
+<li>💍 مكياج عرائس</li>
+<li>💇‍♀️ تسريحات شعر</li>
+<li>🧪 صبغات وعناية بالشعر</li>
+<li>💆‍♀️ عناية بالبشرة</li>
+</ul>
+</div>
+
+<div class="card">
+<ul class="list">
+<li>💅 أظافر</li>
+<li>🎨 تعليم مكياج</li>
+<li>✨ تجهيز مناسبات</li>
+<li>📷 جلسات تصوير</li>
+</ul>
+</div>
+</div>
+
+
+<div class="section-header fade-up" style="margin-top:2rem;">
+<h2 class="section-title">للكوافيرات</h2>
+</div>
+
+<div class="grid-3 fade-up">
+<div class="card"><h3>📂 صفحة خاصة</h3><p>عرض خدماتك بشكل احترافي.</p></div>
+<div class="card"><h3>📊 تقييمات</h3><p>بناء سمعة قوية.</p></div>
+<div class="card"><h3>📅 إدارة الحجوزات</h3><p>تنظيم المواعيد بسهولة.</p></div>
+<div class="card"><h3>🔥 عروض</h3><p>تقديم باقات مميزة.</p></div>
+<div class="card"><h3>🚀 انتشار</h3><p>الوصول لعدد أكبر من العميلات.</p></div>
+</div>
+
+</div>
+</section>
+
+{% endblock %}

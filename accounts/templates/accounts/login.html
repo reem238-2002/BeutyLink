@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول | بيوتي لينك</title>
+
+    <!-- CSS -->
+    <link href="{% static 'css/login.css' %}" rel="stylesheet">
+
+    <!-- Font Awesome للأيقونات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+</head>
+<body>
+
+<div class="login-container">
+    <div class="login-card">
+        <h2>تسجيل الدخول</h2>
+
+        {% if messages %}
+            {% for message in messages %}
+                <div class="error-box">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+
+        <form method="POST">
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label for="username">اسم المستخدم</label>
+                <input type="text" id="username" name="username" placeholder="أدخل اسم المستخدم" required>
+            </div>
+
+            <div class="form-group password-group">
+                <label for="password">كلمة المرور</label>
+                <div class="password-wrapper">
+                    <input type="password" id="password" name="password" placeholder="أدخل كلمة المرور" required>
+                    <i class="fa-solid fa-eye toggle-password"></i>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-login">دخول</button>
+        </form>
+
+        <p class="signup-link">
+            ليس لديك حساب؟ <a href="{% url 'signup' %}">سجلي الآن</a>
+        </p>
+    </div>
+</div>
+
+<!-- ربط JS خارجي -->
+<script src="{% static 'js/password-toggle.js' %}"></script>
+
+</body>
+</html>
