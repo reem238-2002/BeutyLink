@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from .decorators import admin_required, salon_required, client_required
 
 # تسجيل دخول
+# تسجيل دخول
 def login_view(request):
     if request.method == "POST":
         username = request.POST.get("username")
@@ -12,13 +13,8 @@ def login_view(request):
         user = authenticate(request, username=username, password=password)
         if user:
             login(request, user)
-            # إعادة التوجيه حسب الدور
-            if user.is_superuser:
-                return redirect('admin_dashboard')
-            elif getattr(user.profile, 'role', '') == 'salon':
-                return redirect('salon_dashboard')
-            else:
-                return redirect('client_dashboard')
+            # إعادة التوجيه دائمًا للصفحة الرئيسية
+            return redirect('home')
         else:
             messages.error(request, "اسم المستخدم أو كلمة المرور غير صحيحة")
     return render(request, "accounts/login.html")
@@ -28,7 +24,7 @@ def signup_view(request):
     if request.method == "POST":
         username = request.POST.get("username")
         email = request.POST.get("email")
-        password = request.POST.get("password")
+        password = request.POST.get("password1")
         password2 = request.POST.get("password2")
 
         if password != password2:
@@ -44,6 +40,12 @@ def signup_view(request):
         return redirect("login")
 
     return render(request, "accounts/signup.html")
+
+def logout_view(request):
+    logout(request)
+    return redirect('home')
+
+
 
 # Dashboards
 @admin_required
