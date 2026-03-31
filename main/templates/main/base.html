@@ -29,14 +29,39 @@
         <a href="{% url 'home' %}" class="nav-link">الرئيسية</a>
         <a href="{% url 'salons' %}" class="nav-link">تصفح الكوافيرات</a>
         <a href="{% url 'booking' %}" class="nav-link">الحجز</a>
-        <a href="{% url 'admin_dashboard' %}" class="nav-link">لوحة المشرف</a>
         <a href="{% url 'about' %}" class="nav-link">عن بيوتي لينك</a>
         <a href="{% url 'contact' %}" class="nav-link">تواصل</a>
       </nav>
 
       <div class="nav-actions">
-        <a href="{% url 'login' %}" class="btn btn-outline">تسجيل الدخول</a>
-        <a href="{% url 'booking' %}" class="btn btn-primary">احجزي الآن</a>
+
+        {% if user.is_authenticated %}
+
+          <!-- 👤 المستخدم مسجل -->
+          {% if user.is_superuser %}
+            <a href="{% url 'admin_dashboard' %}" class="btn btn-outline">لوحة التحكم</a>
+
+          {% elif user.profile.role == 'salon' %}
+            <a href="{% url 'salon_dashboard' %}" class="btn btn-outline">لوحة التحكم</a>
+
+          {% else %}
+            <a href="{% url 'client_dashboard' %}" class="btn btn-outline">حسابي</a>
+          {% endif %}
+
+          <!-- زر تسجيل الخروج -->
+          <form method="POST" action="{% url 'logout' %}" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-primary">تسجيل الخروج</button>
+          </form>
+
+        {% else %}
+
+          <!-- 🚪 المستخدم مش مسجل -->
+          <a href="{% url 'login' %}" class="btn btn-outline">تسجيل الدخول</a>
+          <a href="{% url 'signup' %}" class="btn btn-primary">إنشاء حساب</a>
+
+        {% endif %}
+
       </div>
 
     </div>
