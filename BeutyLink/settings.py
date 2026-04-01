@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
 from pathlib import Path
-
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'accounts',
     'bookings',
     'main',
+    'salons',
+
 ]
 
 MIDDLEWARE = [
@@ -121,3 +123,14 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / "static"
 ]
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'         # لو تستخدمي Gmail
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'beutylink26@gmail.com'      # بريدك
+EMAIL_HOST_PASSWORD = '2026.beuty'    # كلمة مرور التطبيق أو App Password
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER

@@ -835,3 +835,33 @@ input:focus, select:focus, textarea:focus {
     margin-top: 0.5rem;
   }
 }
+
+/* Salon Join Section */
+.salon-join-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  background: linear-gradient(120deg, #fff, #ffe6f2);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-xl);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-soft);
+  flex-wrap: wrap;
+}
+
+.join-action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.salon-join-box .btn {
+  font-size: 0.95rem;
+  padding: 0.6rem 1.4rem;
+}
+
+.salon-join-box:hover {
+  transform: translateY(-3px);
+  transition: 0.3s;
+}
