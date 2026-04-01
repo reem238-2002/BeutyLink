@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>تسجيل كوافير | بيوتي لينك</title>
+<link rel="stylesheet" href="{% static 'css/salon_register.css' %}">
+</head>
+
+<body>
+
+<div class="container">
+    <div class="form-box">
+        <h2>انضمي ككوافير 💄</h2>
+        <p>قدمي طلبك وسيتم مراجعته من قبل الإدارة</p>
+
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <input type="text" name="name" placeholder="اسم الكوافير" required>
+
+            <input type="text" name="phone" placeholder="رقم الهاتف (9 أرقام)" required>
+
+            <input type="email" name="email" placeholder="البريد الإلكتروني" required>
+
+            <input type="password" name="password" placeholder="كلمة المرور" required>
+
+            <input type="text" name="location" placeholder="الموقع (المدينة / الحي)" required>
+
+            <label>صورة المحل من الخارج</label>
+            <input type="file" name="shop_image" required>
+
+            <label>شعار الكوافير (Logo)</label>
+            <input type="file" name="logo" required>
+
+            <button type="submit">إرسال الطلب 🚀</button>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
