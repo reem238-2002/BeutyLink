@@ -17,23 +17,40 @@
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
 
-            <input type="text" name="name" placeholder="اسم الكوافير" required>
+            <!-- الاسم -->
+            <input type="text" name="name" placeholder="اسم الكوافير" value="{{ form.name.value|default:'' }}">
+            <span style="color:red;">{{ form.name.errors }}</span>
 
-            <input type="text" name="phone" placeholder="رقم الهاتف (9 أرقام)" required>
+            <!-- الهاتف -->
+            <input type="text" name="phone" placeholder="رقم الهاتف (9 أرقام)" value="{{ form.phone.value|default:'' }}">
+            <span style="color:red;">{{ form.phone.errors }}</span>
 
-            <input type="email" name="email" placeholder="البريد الإلكتروني" required>
+            <!-- الايميل -->
+            <input type="email" name="email" placeholder="البريد الإلكتروني" value="{{ form.email.value|default:'' }}">
+            <span style="color:red;">{{ form.email.errors }}</span>
 
-            <input type="password" name="password" placeholder="كلمة المرور" required>
+            <!-- كلمة المرور -->
+            <input type="password" name="password" placeholder="كلمة المرور">
+            <span style="color:red;">{{ form.password.errors }}</span>
 
-            <input type="text" name="location" placeholder="الموقع (المدينة / الحي)" required>
+            <!-- الموقع -->
+            <input type="text" name="location" placeholder="الموقع (المدينة / الحي)" value="{{ form.location.value|default:'' }}">
+            <span style="color:red;">{{ form.location.errors }}</span>
 
+            <!-- الصور -->
             <label>صورة المحل من الخارج</label>
-            <input type="file" name="shop_image" required>
+            <input type="file" name="shop_image">
+            <span style="color:red;">{{ form.shop_image.errors }}</span>
+
+            <label>صورة السجل التجاري</label>
+            <input type="file" name="commercial_registration">
+            <span style="color:red;">{{ form.commercial_registration.errors }}</span>
 
             <label>شعار الكوافير (Logo)</label>
-            <input type="file" name="logo" required>
+            <input type="file" name="logo">
+            <span style="color:red;">{{ form.logo.errors }}</span>
 
-            <button type="submit">إرسال الطلب 🚀</button>
+            <button type="submit">إرسال الطلب </button>
         </form>
     </div>
 </div>

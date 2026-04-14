@@ -8,8 +8,7 @@ def home(request):
 def salons(request):
     return render(request, 'main/salons.html')  # ← أنشئي هذا الملف
 
-def about(request):
-    return render(request, 'main/about.html')
+
 
 def contact(request):
     return render(request, 'main/contact.html')

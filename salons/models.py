@@ -19,6 +19,7 @@ class SalonRequest(models.Model):
 
     password = models.CharField(max_length=128)  # كلمة المرور التي يدخلها الكوافير عند الطلب
     shop_image = models.ImageField(upload_to='salon_requests/')
+    commercial_registration = models.ImageField(upload_to='salon_requests/')
     logo = models.ImageField(upload_to='salon_logos/')
 
     is_approved = models.BooleanField(default=False)

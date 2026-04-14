@@ -7,39 +7,53 @@ from .decorators import admin_required, salon_required, client_required
 # تسجيل دخول
 # تسجيل دخول
 def login_view(request):
+    context = {}
     if request.method == "POST":
-        username = request.POST.get("username")
-        password = request.POST.get("password")
+        username = request.POST.get("username", "").strip()
+        password = request.POST.get("password", "")
         user = authenticate(request, username=username, password=password)
         if user:
             login(request, user)
-            # إعادة التوجيه دائمًا للصفحة الرئيسية
             return redirect('home')
         else:
+            context['username'] = username
+            context['errors'] = {
+                'username': "اسم المستخدم أو كلمة المرور غير صحيحة"
+            }
             messages.error(request, "اسم المستخدم أو كلمة المرور غير صحيحة")
-    return render(request, "accounts/login.html")
+    return render(request, "accounts/login.html", context)
 
 # تسجيل مستخدم جديد
 def signup_view(request):
+    context = {}
     if request.method == "POST":
-        username = request.POST.get("username")
-        email = request.POST.get("email")
-        password = request.POST.get("password1")
-        password2 = request.POST.get("password2")
+        username = request.POST.get("username", "").strip()
+        email = request.POST.get("email", "").strip()
+        password = request.POST.get("password1", "")
+        password2 = request.POST.get("password2", "")
+
+        context['username'] = username
+        context['email'] = email
 
         if password != password2:
+            context['errors'] = {
+                'password2': "كلمة المرور غير متطابقة!"
+            }
             messages.error(request, "كلمة المرور غير متطابقة!")
-            return render(request, "accounts/signup.html")
+            return render(request, "accounts/signup.html", context)
 
         if User.objects.filter(username=username).exists():
+            context['errors'] = {
+                'username': "اسم المستخدم موجود بالفعل!"
+            }
             messages.error(request, "اسم المستخدم موجود بالفعل!")
-            return render(request, "accounts/signup.html")
+            return render(request, "accounts/signup.html", context)
 
         User.objects.create_user(username=username, email=email, password=password)
         messages.success(request, "تم إنشاء الحساب بنجاح! يمكنك تسجيل الدخول الآن.")
         return redirect("login")
 
-    return render(request, "accounts/signup.html")
+    return render(request, "accounts/signup.html", context)
 
 def logout_view(request):
     logout(request)

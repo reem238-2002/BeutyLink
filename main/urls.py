@@ -7,7 +7,6 @@ urlpatterns = [
 
     # صفحات عامة
     path('salons/', views.salons, name='salons'),  # ← تم إضافة صفحة الكوافيرات
-    path('about/', views.about, name='about'),
     path('contact/', views.contact, name='contact'),
 
     # رابط الحجز مع app bookings
