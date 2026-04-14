@@ -1,17 +1,26 @@
+html {
+    scroll-behavior: smooth; /* حركة سلسة عند النزول أو الصعود */
+    overflow-y: auto;        /* اجبار scrollbar رأسي */
+}
+
+/* body */
 body {
     font-family: 'Tajawal', sans-serif;
     background: linear-gradient(135deg, #ffb6c1, #ffc0cb);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    margin: 0;
+    padding: 20px 0;
+    min-height: 100vh;
 }
 
+/* container */
 .container {
     width: 100%;
     max-width: 400px;
+    margin: 0 auto; /* في الوسط */
+    padding: 0 10px;
 }
 
+/* form box */
 .form-box {
     background: white;
     padding: 30px;
