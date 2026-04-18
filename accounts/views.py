@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
+from .models import Salon
 from .decorators import admin_required, salon_required, client_required
 
 # تسجيل دخول
@@ -73,3 +74,14 @@ def salon_dashboard(request):
 @client_required
 def client_dashboard(request):
     return render(request, 'accounts/client_dashboard.html')
+
+def browse_salons(request):
+    salons = Salon.objects.filter(is_active=True)
+
+    search = request.GET.get('search')
+    if search:
+        salons = salons.filter(name__icontains=search)
+
+    return render(request, 'browse_salons.html', {
+        'salons': salons
+    })

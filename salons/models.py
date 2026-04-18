@@ -26,5 +26,9 @@ class SalonRequest(models.Model):
 
     created_at = models.DateTimeField(auto_now_add=True)
 
+    is_blacklisted = models.BooleanField(default=False)
+    blacklist_reason = models.TextField(null=True, blank=True)
+    blacklisted_at = models.DateTimeField(null=True, blank=True)
+
     def __str__(self):
         return self.name

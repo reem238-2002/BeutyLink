@@ -1,0 +1,348 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}تصفح الكوافيرات | بيوتي لينك{% endblock %}
+
+{% block content %}
+<style>
+    :root {
+        --glass-bg: rgba(255, 255, 255, 0.85);
+        --glass-border: rgba(240, 138, 179, 0.3);
+    }
+
+    .salons-hero {
+        background: linear-gradient(135deg, #f08ab3 0%, #d94b8c 100%);
+        padding: 4rem 1rem;
+        text-align: center;
+        color: white;
+        margin-bottom: -3rem;
+        position: relative;
+        z-index: 1;
+    }
+
+    .filter-wrapper {
+        position: sticky;
+        top: 80px;
+        z-index: 10;
+        margin-bottom: 2rem;
+    }
+
+    .filter-bar {
+        background: var(--glass-bg);
+        backdrop-filter: blur(12px);
+        border: 1px solid var(--glass-border);
+        border-radius: 999px;
+        padding: 0.8rem 1.5rem;
+        box-shadow: 0 10px 30px rgba(240, 138, 179, 0.2);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        align-items: center;
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    .filter-group {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        flex: 1;
+        min-width: 180px;
+    }
+
+    .filter-select {
+        width: 100%;
+        background: transparent;
+        border: none;
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: var(--text-main);
+        cursor: pointer;
+        padding: 0.2rem;
+    }
+
+    .salon-card-professional {
+        position: relative;
+        border-radius: var(--radius-xl);
+        overflow: hidden;
+        background: white;
+        border: 1px solid var(--border-soft);
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .salon-card-professional:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 25px 50px rgba(240, 138, 179, 0.4);
+    }
+
+    .card-banner {
+        height: 200px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .card-banner img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+
+    .salon-card-professional:hover .card-banner img {
+        transform: scale(1.1);
+    }
+
+    .card-logo {
+        position: absolute;
+        bottom: -25px;
+        right: 20px;
+        width: 60px;
+        height: 60px;
+        border-radius: 18px;
+        background: white;
+        padding: 5px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        z-index: 2;
+    }
+
+    .card-logo img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        border-radius: 14px;
+    }
+
+    .card-body {
+        padding: 2rem 1.5rem 1.5rem;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .salon-category {
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: var(--primary-strong);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 0.5rem;
+    }
+
+    .salon-name {
+        font-size: 1.35rem;
+        font-weight: 800;
+        margin-bottom: 0.5rem;
+        color: var(--text-main);
+    }
+
+    .salon-meta {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1rem;
+        font-size: 0.85rem;
+        color: var(--text-muted);
+    }
+
+    .price-badge {
+        background: var(--primary-soft);
+        color: var(--primary-strong);
+        padding: 0.2rem 0.6rem;
+        border-radius: 8px;
+        font-weight: 700;
+    }
+
+    .service-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        margin-bottom: 1.2rem;
+    }
+
+    .service-tag {
+        font-size: 0.7rem;
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        padding: 0.2rem 0.5rem;
+        border-radius: 6px;
+        color: #64748b;
+    }
+
+    .review-box {
+        background: #fff9fd;
+        border-left: 3px solid var(--primary);
+        padding: 0.8rem;
+        border-radius: 0 10px 10px 0;
+        font-size: 0.85rem;
+        font-style: italic;
+        color: var(--text-muted);
+        margin-bottom: 1.5rem;
+        flex-grow: 1;
+    }
+
+    .card-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 1rem;
+        border-top: 1px solid #f1f5f9;
+    }
+
+    .rating {
+        display: flex;
+        align-items: center;
+        gap: 0.3rem;
+        font-weight: 700;
+        color: #fbbf24;
+    }
+
+    .empty-state {
+        text-align: center;
+        padding: 5rem 2rem;
+    }
+</style>
+
+<!-- Hero Section -->
+<div class="salons-hero">
+    <div class="section-inner">
+        <h1 class="hero-title" style="color: white; font-weight: 900;">تصفحي أفضل الكوافيرات</h1>
+        <p style="opacity: 0.9; max-width: 600px; margin: 0 auto;">اكتشفي مراكز التجميل الأكثر احترافية في صنعاء، وحجزي موعدك القادم بضغطة زر واحدة.</p>
+    </div>
+</div>
+
+<section class="section" style="padding-top: 0;">
+    <div class="section-inner">
+        
+        <!-- Filter Bar -->
+        <div class="filter-wrapper fade-up">
+            <form method="GET" class="filter-bar">
+                <!-- Search -->
+                <div class="filter-group" style="flex: 1.5;">
+                    <span style="color: var(--primary-strong);">🔍</span>
+                    <input type="text" name="search" value="{{ search_query }}" placeholder="ابحثي بالاسم..." class="filter-select" style="border-radius: 0;">
+                </div>
+
+                <!-- Area -->
+                <div class="filter-group">
+                    <span style="color: var(--primary-strong);">📍</span>
+                    <select name="area" class="filter-select" onchange="this.form.submit()">
+                        <option value="">جميع المناطق</option>
+                        {% for area in all_areas %}
+                        <option value="{{ area }}" {% if current_area == area %}selected{% endif %}>{{ area }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <!-- Service -->
+                <div class="filter-group">
+                    <span style="color: var(--primary-strong);">✨</span>
+                    <select name="service" class="filter-select" onchange="this.form.submit()">
+                        <option value="">جميع الخدمات</option>
+                        {% for service in all_services %}
+                        <option value="{{ service.id }}" {% if current_service == service.id|stringformat:"s" %}selected{% endif %}>{{ service.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <!-- Price -->
+                <div class="filter-group">
+                    <span style="color: var(--primary-strong);">💰</span>
+                    <select name="price" class="filter-select" onchange="this.form.submit()">
+                        <option value="">أي سعر</option>
+                        <option value="1" {% if current_price == "1" %}selected{% endif %}>اقتصادية ($)</option>
+                        <option value="2" {% if current_price == "2" %}selected{% endif %}>متوسطة ($$)</option>
+                        <option value="3" {% if current_price == "3" %}selected{% endif %}>فاخرة ($$$)</option>
+                    </select>
+                </div>
+
+                <a href="{% url 'salons' %}" class="btn btn-outline" style="padding: 0.4rem; border-radius: 50%; width: 40px; height: 40px;" title="إعادة ضبط">🔄</a>
+            </form>
+        </div>
+
+        <!-- Salons Grid -->
+        <div class="grid-3" style="margin-top: 3rem;">
+            {% for salon in salons %}
+            <div class="fade-up">
+                <div class="salon-card-professional">
+                    <div class="card-banner">
+                        {% if salon.image %}
+                        <img src="{{ salon.image.url }}" alt="{{ salon.name }}">
+                        {% endif %}
+                        <div class="price-badge" style="position: absolute; top: 15px; left: 15px;">
+                            {{ salon.get_price_range_display }}
+                        </div>
+                    </div>
+
+                    <div class="card-logo">
+                        {% if salon.logo %}
+                        <img src="{{ salon.logo.url }}" alt="Logo">
+                        {% else %}
+                        <div style="background: var(--primary); height: 100%; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">
+                            {{ salon.name|slice:":1" }}
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="card-body">
+                        <div class="salon-category">{{ salon.area }}</div>
+                        <h3 class="salon-name">{{ salon.name }}</h3>
+                        
+                        <div class="service-tags">
+                            {% for service in salon.services.all|slice:":3" %}
+                            <span class="service-tag">{{ service.name }}</span>
+                            {% endfor %}
+                            {% if salon.services.count > 3 %}
+                            <span class="service-tag">+{{ salon.services.count|add:"-3" }}</span>
+                            {% endif %}
+                        </div>
+
+                        {% with review=salon.reviews.first %}
+                        {% if review %}
+                        <div class="review-box">
+                            "{{ review.comment|truncatechars:70 }}"
+                            <div style="font-size: 0.7rem; font-weight: 700; margin-top: 5px; color: var(--primary-strong);">
+                                — {{ review.user_name }}
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% endwith %}
+
+                        <div class="card-footer">
+                            <div class="rating">
+                                <span>⭐</span>
+                                <span>{{ salon.rating }}</span>
+                            </div>
+                            <a href="{% url 'booking' %}" class="btn btn-primary">احجزي الآن</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="empty-state" style="grid-column: 1 / -1;">
+                <div style="font-size: 4rem;">🧐</div>
+                <h2 class="section-title">لم نجد أي كوافيرات!</h2>
+                <p class="section-subtitle">حاولي تغيير الفلاتر أو البحث عن شيء آخر.</p>
+                <a href="{% url 'salons' %}" class="btn btn-primary" style="margin-top: 2rem;">عرض الكل</a>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+</section>
+
+<script>
+    // Animation logic
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+{% endblock %}

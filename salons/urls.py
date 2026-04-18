@@ -1,6 +1,9 @@
 from django.urls import path
-from .views import salon_register
+from . import views
 
 urlpatterns = [
-    path('register/', salon_register, name='salon_register'),
+    path('register/', views.salon_register, name='salon_register'),
+    path('blacklist/', views.blacklist_page, name='blacklist'),
+    path('blacklist/add/<int:salon_id>/', views.blacklist_salon, name='blacklist_salon'),
+    path('blacklist/remove/<int:salon_id>/', views.remove_from_blacklist, name='remove_from_blacklist'),
 ]
