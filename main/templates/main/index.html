@@ -40,10 +40,6 @@
             <span class="stat-number">+320</span>
             عملية حجز
           </div>
-          <div class="stat-pill">
-            <span class="stat-number">3</span>
-            أنواع حسابات
-          </div>
         </div>
 
       </div>
@@ -83,33 +79,7 @@
       </div>
     </div>
 
-    <!-- الواجهات -->
-    <div class="grid-3 fade-up" style="margin-top:1.5rem;">
-      <div class="card">
-        <div class="section-kicker">واجهة العميلة</div>
-        <p class="section-subtitle">
-          تصفح، مقارنة، وحجز بسهولة مع تجربة استخدام بسيطة وواضحة.
-        </p>
-      </div>
-
-      <div class="card">
-        <div class="section-kicker">واجهة الكوافير</div>
-        <p class="section-subtitle">
-          إدارة الخدمات، الأسعار، والحجوزات من لوحة تحكم سهلة.
-        </p>
-      </div>
-
-      <div class="card">
-        <div class="section-kicker">واجهة المشرف</div>
-        <p class="section-subtitle">
-          متابعة المستخدمين والكوافيرات وإدارة النظام بالكامل.
-        </p>
-      </div>
-    </div>
-
-  </div>
-</section>
-
+    
 
 <!-- قسم الجمال -->
 <section class="section">
@@ -142,7 +112,7 @@
 
 <div class="grid-3 fade-up">
 <div class="card"><h3>🔍 بحث سهل</h3><p>ابحثي عن الكوافير المناسب بسرعة.</p></div>
-<div class="card"><h3>📸 عرض الأعمال</h3><p>شاهدي نماذج حقيقية قبل الحجز.</p></div>
+<div class="card"><h3>📸 عرض نموذج للأعمال</h3><p>شاهدي نماذج صور للاعمال المشابهه لنا قبل الحجز.</p></div>
 <div class="card"><h3>⭐ تقييمات</h3><p>اختاري بناءً على تجارب حقيقية.</p></div>
 <div class="card"><h3>📅 حجز مباشر</h3><p>بدون اتصالات أو تعقيد.</p></div>
 <div class="card"><h3>💰 أسعار واضحة</h3><p>شفافية كاملة في الخدمات.</p></div>
@@ -175,19 +145,32 @@
 </div>
 
 
-<div class="section-header fade-up" style="margin-top:2rem;">
-<h2 class="section-title">للكوافيرات</h2>
 </div>
+</section>
 
-<div class="grid-3 fade-up">
-<div class="card"><h3>📂 صفحة خاصة</h3><p>عرض خدماتك بشكل احترافي.</p></div>
-<div class="card"><h3>📊 تقييمات</h3><p>بناء سمعة قوية.</p></div>
-<div class="card"><h3>📅 إدارة الحجوزات</h3><p>تنظيم المواعيد بسهولة.</p></div>
-<div class="card"><h3>🔥 عروض</h3><p>تقديم باقات مميزة.</p></div>
-<div class="card"><h3>🚀 انتشار</h3><p>الوصول لعدد أكبر من العميلات.</p></div>
-</div>
+<!-- قسم انضمام الكوافيرات -->
+<section class="section">
+  <div class="section-inner">
 
-</div>
+    <div class="salon-join-box fade-up">
+      
+      <div>
+        <div class="section-kicker">للكوافيرات</div>
+        <h2 class="section-title">هل تملكين كوافير؟ 💄</h2>
+        <p class="section-subtitle">
+          انضمي إلى منصة بيوتي لينك وابدئي بعرض خدماتك والوصول لعدد أكبر من العميلات بسهولة واحترافية.
+        </p>
+      </div>
+
+      <div class="join-action">
+        <a href="{% url 'salon_register' %}" class="btn btn-primary">
+          انضمي ككوافير الآن 
+        </a>
+      </div>
+
+    </div>
+
+  </div>
 </section>
 
 {% endblock %}

@@ -1,0 +1,31 @@
+<h1>القائمة السوداء</h1>
+
+<div class="blacklist-container">
+  {% for salon in salons %}
+    <div class="card">
+      <h3>{{ salon.name }}</h3>
+      <p>السبب: {{ salon.blacklist_reason }}</p>
+      <p>التاريخ: {{ salon.blacklisted_at }}</p>
+
+      <button onclick="removeFromBlacklist('{{ salon.id }}')">
+        إزالة من القائمة
+      </button>
+    </div>
+  {% endfor %}
+</div>
+
+
+
+
+
+
+<script>
+    function removeFromBlacklist(id){
+        fetch(`/blacklist/remove/${id}/`)
+          .then(res => res.json())
+          .then(data => {
+            alert(data.message);
+            location.reload();
+          });
+      }
+    </script>

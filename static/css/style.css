@@ -723,8 +723,8 @@ input:focus, select:focus, textarea:focus {
 }
 
 .footer {
-  background: #111;
-  color: #eee;
+  background: #fa7edf;
+  color: #17e864;
   padding: 40px 20px 20px;
 }
 
@@ -773,7 +773,7 @@ input:focus, select:focus, textarea:focus {
 
 .footer-bottom {
   margin-top: 30px;
-  border-top: 1px solid #333;
+  border-top: 1px solid #ec2ec6;
   padding-top: 15px;
   text-align: center;
   font-size: 13px;
@@ -834,4 +834,173 @@ input:focus, select:focus, textarea:focus {
     justify-content: flex-start;
     margin-top: 0.5rem;
   }
+}
+
+/* Salon Join Section */
+.salon-join-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  background: linear-gradient(120deg, #fff, #ffe6f2);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-xl);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-soft);
+  flex-wrap: wrap;
+}
+
+.join-action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.salon-join-box .btn {
+  font-size: 0.95rem;
+  padding: 0.6rem 1.4rem;
+}
+
+.salon-join-box:hover {
+  transform: translateY(-3px);
+  transition: 0.3s;
+}
+
+
+
+
+
+/* salons.css */
+
+body {
+  font-family: 'Cairo', sans-serif;
+  background: linear-gradient(to bottom, #fff0f5, #ffe4ec);
+  margin: 0;
+}
+
+.salon-page {
+  padding: 40px;
+}
+
+/* العنوان */
+.header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header h1 {
+  color: #d63384;
+  font-size: 32px;
+}
+
+.header p {
+  color: #666;
+}
+
+/* البحث */
+.search-box {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.search-box input {
+  padding: 10px;
+  width: 250px;
+  border-radius: 20px;
+  border: 1px solid #ddd;
+}
+
+.search-box button {
+  margin-right: 10px;
+  padding: 10px 20px;
+  border: none;
+  background: #ff4da6;
+  color: white;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+/* الكروت */
+.salons-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.salon-card {
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+  transition: 0.3s;
+}
+
+.salon-card:hover {
+  transform: translateY(-5px);
+}
+
+.salon-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.content {
+  padding: 15px;
+}
+
+.content h3 {
+  margin: 0;
+  color: #333;
+}
+
+.content p {
+  font-size: 14px;
+  color: #777;
+}
+
+.info {
+  margin: 10px 0;
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* زر */
+.btn {
+  display: block;
+  text-align: center;
+  padding: 10px;
+  background: linear-gradient(to right, #ff4da6, #ff80bf);
+  color: white;
+  border-radius: 15px;
+  text-decoration: none;
+}
+
+
+
+.toast {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background: #333;
+  color: #fff;
+  padding: 12px 18px;
+  border-radius: 8px;
+  opacity: 0;
+  transition: 0.3s;
+  z-index: 9999;
+}
+
+.toast.show {
+  opacity: 1;
+}
+
+.toast.success {
+  background: green;
+}
+
+.toast.error {
+  background: red;
 }
