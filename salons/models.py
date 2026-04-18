@@ -19,11 +19,16 @@ class SalonRequest(models.Model):
 
     password = models.CharField(max_length=128)  # كلمة المرور التي يدخلها الكوافير عند الطلب
     shop_image = models.ImageField(upload_to='salon_requests/')
+    commercial_registration = models.ImageField(upload_to='salon_requests/')
     logo = models.ImageField(upload_to='salon_logos/')
 
     is_approved = models.BooleanField(default=False)
 
     created_at = models.DateTimeField(auto_now_add=True)
+
+    is_blacklisted = models.BooleanField(default=False)
+    blacklist_reason = models.TextField(null=True, blank=True)
+    blacklisted_at = models.DateTimeField(null=True, blank=True)
 
     def __str__(self):
         return self.name

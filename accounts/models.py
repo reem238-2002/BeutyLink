@@ -28,3 +28,40 @@ def create_user_profile(sender, instance, created, **kwargs):
 def save_user_profile(sender, instance, **kwargs):
     if hasattr(instance, 'profile'):
         instance.profile.save()
+
+class Service(models.Model):
+    name = models.CharField(max_length=100)
+    icon = models.CharField(max_length=50, blank=True, null=True, help_text="Lucide icon name")
+
+    def __str__(self):
+        return self.name
+
+class Salon(models.Model):
+    PRICE_CHOICES = (
+        (1, '$'),
+        (2, '$$'),
+        (3, '$$$'),
+    )
+    name = models.CharField(max_length=200)
+    description = models.TextField()
+    image = models.ImageField(upload_to='salons/', help_text="Background image")
+    logo = models.ImageField(upload_to='logos/', blank=True, null=True, help_text="Small logo/avatar")
+    rating = models.FloatField(default=0)
+    location = models.CharField(max_length=255, default='صنعاء')
+    area = models.CharField(max_length=100, blank=True, null=True, help_text="Neighborhood/Area")
+    price_range = models.IntegerField(choices=PRICE_CHOICES, default=2)
+    services = models.ManyToManyField(Service, related_name='salons')
+    is_active = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.name
+
+class Review(models.Model):
+    salon = models.ForeignKey(Salon, on_delete=models.CASCADE, related_name='reviews')
+    user_name = models.CharField(max_length=100)
+    comment = models.TextField()
+    rating = models.IntegerField(default=5)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.user_name} - {self.salon.name}"

@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.db.models import Q
+from accounts.models import Salon, Service
 
 # الصفحة الرئيسية
 def home(request):
@@ -6,7 +8,42 @@ def home(request):
 
 # صفحات عامة
 def salons(request):
-    return render(request, 'main/salons.html')  # ← أنشئي هذا الملف
+    salons_qs = Salon.objects.filter(is_active=True).prefetch_related('services')
+    
+    # 1. البحث النصي
+    search_query = request.GET.get('search', '')
+    if search_query:
+        salons_qs = salons_qs.filter(Q(name__icontains=search_query) | Q(description__icontains=search_query))
+    
+    # 2. الفلترة بالمنطقة
+    area_filter = request.GET.get('area', '')
+    if area_filter:
+        salons_qs = salons_qs.filter(area=area_filter)
+        
+    # 3. الفلترة بالخدمات
+    service_filter = request.GET.get('service', '')
+    if service_filter:
+        salons_qs = salons_qs.filter(services__id=service_filter)
+        
+    # 4. الفلترة بالفئة السعرية
+    price_filter = request.GET.get('price', '')
+    if price_filter:
+        salons_qs = salons_qs.filter(price_range=price_filter)
+
+    # جلب البيانات اللازمة للفلاتر
+    all_areas = Salon.objects.filter(is_active=True).values_list('area', flat=True).distinct()
+    all_areas = [a for a in all_areas if a] # تنظيف القيم الفارغة
+    all_services = Service.objects.all()
+
+    return render(request, 'main/salons.html', {
+        'salons': salons_qs.distinct(),
+        'search_query': search_query,
+        'all_areas': all_areas,
+        'all_services': all_services,
+        'current_area': area_filter,
+        'current_service': service_filter,
+        'current_price': price_filter,
+    })
 
 def about(request):
     return render(request, 'main/about.html')

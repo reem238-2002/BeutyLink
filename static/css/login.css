@@ -118,3 +118,14 @@ body {
     margin-bottom: 1rem;
     font-size: 0.9rem;
 }
+
+.input-error {
+    border-color: #d63384;
+}
+
+.field-error {
+    display: block;
+    margin-top: 0.35rem;
+    color: #d63384;
+    font-size: 0.85rem;
+}
